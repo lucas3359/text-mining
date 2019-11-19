@@ -1,5 +1,8 @@
 library(quanteda)
 library(caret)
+library(tidyverse)
+library(tm)
+library(dplyr)
 
 data<-read.table("J:/Lucas/TextMining/futurelandscape.csv", header=FALSE, sep=',')
 data$V1<-as.character(data$V1)
@@ -62,12 +65,12 @@ dfm_x<-as.data.frame(t(dfm))
 #testing data using pre-categorized publications
 
 x <- read.csv("J:/Lucas/TextMining/ourLandAndWaterPublications.csv")
-x$ï..Title<-as.character(x$ï..Title)
+x$?..Title<-as.character(x$?..Title)
 x$Abstract<-as.character(x$Abstract)
-Encoding(x$ï..Title) <- "UTF-8"
+Encoding(x$?..Title) <- "UTF-8"
 Encoding(x$Abstract) <- "UTF-8"
 
-x<-x%>%mutate(text = paste(ï..Title,Abstract))%>%dplyr::select(-1,-2)%>%mutate(Train = "test")
+x<-x%>%mutate(text = paste(?..Title,Abstract))%>%dplyr::select(-1,-2)%>%mutate(Train = "test")
 
 corpus_test<-corpus(x)
 
